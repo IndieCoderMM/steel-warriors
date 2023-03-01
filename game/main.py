@@ -1,11 +1,8 @@
+import random
 import arcade
 from game.modules.player import Player
-
-WIDTH = 800
-HEIGHT = 600
-TITLE = "STEEL WARRIORS"
-SCALING = 1.5
-PLAYER_SPEED = 100
+from game.modules.enemy import Enemy
+from game.settings import WIDTH, HEIGHT, TITLE, SCALE, PLAYER_SPEED
 
 
 class Game(arcade.Window):
@@ -13,17 +10,31 @@ class Game(arcade.Window):
         super().__init__(width, height, title)
         self.enemies_list = arcade.SpriteList()
         self.all_sprites = arcade.SpriteList()
-        self.paused = False
-        self.game_over = False
+        self.score_text = arcade.Text('Score: ', 10, height - 50, font_size=30)
+        self.game_over_text = arcade.Text(
+            'Game Over!', width/2, height/2, font_size=50, anchor_x="center", anchor_y="center")
         self.setup()
 
     def setup(self):
         arcade.set_background_color(arcade.color.AMAZON)
+        self.enemies_list.clear()
+        self.all_sprites.clear()
         self.player = Player('game/assets/tank_blue.png',
-                             SCALING, self.width / 2)
+                             SCALE, self.width / 2)
         self.all_sprites.append(self.player)
+        self.player.bullets_list.clear()
+        self.score = 0
         self.paused = False
         self.game_over = False
+        arcade.schedule(self.add_enemy, 2)
+
+    def add_enemy(self, delta_time: float):
+        colors = ['red', 'dark']
+        x = random.randint(50, self.width - 50)
+        enemy = Enemy(colors[random.randrange(
+            0, len(colors))], x, self.height + 100)
+        self.enemies_list.append(enemy)
+        self.all_sprites.append(enemy)
 
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.Q:
@@ -48,31 +59,33 @@ class Game(arcade.Window):
         if self.paused:
             return
 
-        for sprite in self.all_sprites:
-            sprite.center_x = int(
-                sprite.center_x + sprite.change_x * delta_time
-            )
-            sprite.center_y = int(
-                sprite.center_y + sprite.change_y * delta_time
-            )
+        self.all_sprites.update()
 
         for bullet in self.player.bullets_list:
-            bullet.center_y = int(
-                bullet.center_y + bullet.change_y * delta_time)
+            for enemy in self.enemies_list:
+                if bullet.collides_with_sprite(enemy):
+                    bullet.remove_from_sprite_lists()
+                    enemy.remove_from_sprite_lists()
+                    self.score += 1
+
+        for enemy in self.enemies_list:
+            if enemy.top < 0:
+                self.game_over = True
+                self.paused = True
 
         if self.player.collides_with_list(self.enemies_list):
             self.game_over = True
             self.paused = True
 
-        if self.player.right > self.width:
-            self.player.right = self.width
-        if self.player.left < 0:
-            self.player.left = 0
+        self.score_text.text = "Score: " + str(self.score)
 
     def on_draw(self):
         arcade.start_render()
         self.all_sprites.draw()
         self.player.bullets_list.draw()
+        self.score_text.draw()
+        if self.game_over:
+            self.game_over_text.draw()
 
 
 def run():
