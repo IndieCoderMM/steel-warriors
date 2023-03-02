@@ -1,17 +1,26 @@
 ## 📃 Table of Contents
-- [👾 Steel Warriors](#-steel-warriors)
-  - [📥 Getting Started](#-getting-started)
+- [⚙ Steel Warriors](#-steel-warriors)
+  - [📸 Screenshots](#-screenshots)
+  - [🕹 Gameplay](#-gameplay)
   - [🎮 Controls](#-controls)
-  - [� Gameplay](#-gameplay)
+  - [📥 Installation](#-installation)
+  - [🤝 Contributing](#-contributing)
+  - [📚 Resources](#-resources)
+  - [🎨 Artwork](#-artwork)
+  - [💖 Supporting](#-supporting)
   - [📜 License](#-license)
 
-# 👾 Steel Warriors
+# ⚙ Steel Warriors
 
-A space-invaders like game created with Python Arcade library. In this game, player controls a tank and must defeat waves of enemy tanks while avoiding obstacles and collection power ups.
+A space-invaders like game created with Python Arcade library. In this game, player controls a tank and must defeat waves of enemy tanks while avoiding obstacles and collecting power ups.
 
-## 📥 Getting Started
+## 📸 Screenshots
 
-To play this, you will need to have Python 3.10+ installed on your computer. Once you have cloned this repo, install the necessary dependencies using `pip install -r requirements.txt`. Then, you can run the game with `python -m game`.
+> Screenshots and gifs
+
+## 🕹 Gameplay
+
+> Features of the game
 
 ## 🎮 Controls
 
@@ -19,8 +28,27 @@ To play this, you will need to have Python 3.10+ installed on your computer. Onc
 - Press **SPACE** to shoot
 - Press **P** to pause; **R** to restart
 
-## 🕹 Gameplay
-> Features of the game
+## 📥 Installation
+
+To play this game, you will need to have Python 3.10+ installed on your computer. Once you have cloned this repo, install the necessary dependencies using `pip install -r requirements.txt`. Then, you can run the game with `python -m game`.
+
+## 🤝 Contributing
+
+If you have any ideas for new features or improvements to the game, please submit a PR or reach out to me. I'd love to hear from you.
+
+## 📚 Resources
+
+These are some useful resources to learn more about Arcade library.
+- [Arcade Library](https://arcade.academy/)
+- [RealPython Tutorial](https://realpython.com/arcade-python-game-framework/)
+
+## 🎨 Artwork
+
+> list of assets and sfx
+
+## 💖 Supporting
+
+If you like this project, please consider giving this repo a ⭐. It only takes a second and means a lot to me.
 
 ## 📜 License
 
