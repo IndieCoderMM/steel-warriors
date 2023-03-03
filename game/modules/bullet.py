@@ -4,8 +4,8 @@ from game.settings import BULLET_SPEED, HEIGHT
 
 class Bullet(arcade.Sprite):
     def __init__(self, x, y, direction):
-        img_path = "game/assets/bulletBlue1_outline.png"
-        super().__init__(img_path, 2, flipped_vertically=direction == -1)
+        img_path = "game/assets/shotLarge.png"
+        super().__init__(img_path, 1, flipped_vertically=direction == -1)
         self.center_x = x
         self.top = y
         self.direction = direction

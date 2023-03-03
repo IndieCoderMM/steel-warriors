@@ -3,8 +3,8 @@ from game.modules.bullet import Bullet
 
 
 class Tank(arcade.Sprite):
-    def __init__(self, img_path, scale, x, direction=1):
-        super().__init__(img_path, scale)
+    def __init__(self, img_path: str, scale: float, x: float,  direction: int = 1, flip_y: bool = False):
+        super().__init__(img_path, scale, flipped_vertically=flip_y)
         self.center_x = x
         self.direction = direction
         self.bullets_list = arcade.SpriteList()
