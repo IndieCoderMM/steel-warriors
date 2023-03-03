@@ -5,9 +5,9 @@
   - [🎮 Controls](#-controls)
   - [📥 Installation](#-installation)
   - [🤝 Contributing](#-contributing)
+  - [💖 Supporting](#-supporting)
   - [📚 Resources](#-resources)
   - [🎨 Artwork](#-artwork)
-  - [💖 Supporting](#-supporting)
   - [📜 License](#-license)
 
 # ⚙ Steel Warriors
@@ -36,6 +36,11 @@ To play this game, you will need to have Python 3.10+ installed on your computer
 
 If you have any ideas for new features or improvements to the game, please submit a PR or reach out to me. I'd love to hear from you.
 
+
+## 💖 Supporting
+
+If you like this project, please consider giving this repo a ⭐. It only takes a second and means a lot to me.
+
 ## 📚 Resources
 
 These are some useful resources to learn more about Arcade library.
@@ -45,10 +50,6 @@ These are some useful resources to learn more about Arcade library.
 ## 🎨 Artwork
 
 > list of assets and sfx
-
-## 💖 Supporting
-
-If you like this project, please consider giving this repo a ⭐. It only takes a second and means a lot to me.
 
 ## 📜 License
 

@@ -81,8 +81,10 @@ class Game(arcade.Window):
 
     def on_draw(self):
         arcade.start_render()
-        self.all_sprites.draw()
         self.player.bullets_list.draw()
+        for enemy in self.enemies_list:
+            enemy.bullets_list.draw()
+        self.all_sprites.draw()
         self.score_text.draw()
         if self.game_over:
             self.game_over_text.draw()
