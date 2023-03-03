@@ -1,7 +1,6 @@
 ## 📃 Table of Contents
 - [⚙ Steel Warriors](#-steel-warriors)
-  - [📸 Screenshots](#-screenshots)
-  - [🕹 Gameplay](#-gameplay)
+  - [🕹 Features](#-features)
   - [🎮 Controls](#-controls)
   - [📥 Installation](#-installation)
   - [🤝 Contributing](#-contributing)
@@ -12,21 +11,28 @@
 
 # ⚙ Steel Warriors
 
-A space-invaders like game created with Python Arcade library. In this game, player controls a tank and must defeat waves of enemy tanks while avoiding obstacles and collecting power ups.
+Top down shooter game created with Python Arcade library. In this game, player controls a tank and must defeat waves of enemy tanks while avoiding missles and collecting power ups.
 
-## 📸 Screenshots
+![Demo](/demo_gameplay.gif)
 
-> Screenshots and gifs
 
-## 🕹 Gameplay
+## 🕹 Features
 
-> Features of the game
+- The game consists of only one level 
+- Map is generated with **WFC algorithm**
+- Enemy tanks have different hitpoints and fire rates
+- Must defeat all tanks before they invade the border
+- Gamover conditions:
+  - if one enemy escapes
+  - if player runs out of lives
+  - if collision with enemy
 
 ## 🎮 Controls
 
 - Use **LEFT** & **RIGHT** arrows to move the tank
 - Press **SPACE** to shoot
 - Press **P** to pause; **R** to restart
+- Press **G** to generate new map
 
 ## 📥 Installation
 
@@ -36,20 +42,19 @@ To play this game, you will need to have Python 3.10+ installed on your computer
 
 If you have any ideas for new features or improvements to the game, please submit a PR or reach out to me. I'd love to hear from you.
 
-
 ## 💖 Supporting
 
 If you like this project, please consider giving this repo a ⭐. It only takes a second and means a lot to me.
 
 ## 📚 Resources
 
-These are some useful resources to learn more about Arcade library.
 - [Arcade Library](https://arcade.academy/)
 - [RealPython Tutorial](https://realpython.com/arcade-python-game-framework/)
+- [WFC map generation](https://github.com/IndieCoderMM/algo-lab/tree/master/Map-generator)
 
 ## 🎨 Artwork
 
-> list of assets and sfx
+- [Top-down tanks package](https://www.kenney.nl/assets/topdown-tanks-redux)
 
 ## 📜 License
 
