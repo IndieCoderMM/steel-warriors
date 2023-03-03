@@ -13,9 +13,10 @@ class Game(arcade.Window):
         self.enemies_list = arcade.SpriteList()
         self.all_sprites = arcade.SpriteList()
         self.explosion_sprites = arcade.SpriteList()
-        self.score_text = arcade.Text('Score: ', 10, height - 50, font_size=30)
+        self.score_text = arcade.Text(
+            'Score: ', 10, height - 50, color=arcade.color.AZURE, font_size=30, bold=True)
         self.game_over_text = arcade.Text(
-            'Game Over!', width/2, height/2, font_size=50, anchor_x="center", anchor_y="center")
+            'Game Over!', width/2, height/2, font_size=50, color=arcade.color.AUBURN, bold=True, anchor_x="center", anchor_y="center")
         self.setup()
         self.map = Map()
 
@@ -61,6 +62,10 @@ class Game(arcade.Window):
             self.paused = not self.paused
         elif symbol == arcade.key.LEFT:
             self.player.change_x = -PLAYER_SPEED
+        elif symbol == arcade.key.UP:
+            self.player.change_y = PLAYER_SPEED / 2
+        elif symbol == arcade.key.DOWN:
+            self.player.change_y = -PLAYER_SPEED / 2
         elif symbol == arcade.key.RIGHT:
             self.player.change_x = PLAYER_SPEED
         elif symbol == arcade.key.SPACE:
@@ -71,6 +76,8 @@ class Game(arcade.Window):
     def on_key_release(self, symbol: int, modifiers: int):
         if (symbol == arcade.key.LEFT or symbol == arcade.key.RIGHT):
             self.player.change_x = 0
+        elif (symbol == arcade.key.UP or symbol == arcade.key.DOWN):
+            self.player.change_y = 0
 
     def on_update(self, delta_time: float):
         if self.paused:
@@ -90,12 +97,19 @@ class Game(arcade.Window):
                     enemy.remove_from_sprite_lists()
                     self.score += 1
 
-        # for enemy in self.enemies_list:
-        #     if enemy.top < 0:
-        #         self.game_over = True
-        #         self.paused = True
+        for enemy in self.enemies_list:
+            if enemy.top < 0:
+                self.game_over = True
+                self.paused = True
+            for bullet in enemy.bullets_list:
+                if bullet.collides_with_sprite(self.player):
+                    bullet.remove_from_sprite_lists()
+                    self.player.health -= 20
 
-        if self.player.collides_with_list(self.enemies_list):
+        if self.player.collides_with_list(self.enemies_list) or self.player.health <= 0:
+            explosion = Expolsion(
+                'game/assets/explosion3.png', self.player.center_x, self.player.center_y, lifetime=0.25)
+            self.all_sprites.append(explosion)
             self.game_over = True
             self.paused = True
 
@@ -109,6 +123,15 @@ class Game(arcade.Window):
             enemy.bullets_list.draw()
         self.all_sprites.draw()
         self.explosion_sprites.draw()
+        radius = 4
+        hp = 0
+        i = 0
+        while (hp < self.player.health):
+            hp += 20
+            arcade.draw_circle_filled(
+                self.player.left + i * (2*radius + radius), self.player.bottom - 2 * radius, radius=radius, color=arcade.color.BARBIE_PINK)
+            i += 1
+
         self.score_text.draw()
         if self.game_over:
             self.game_over_text.draw()
