@@ -3,6 +3,7 @@ import arcade
 from game.modules.player import Player
 from game.modules.enemy import Enemy
 from game.modules.explosion import Expolsion
+from game.modules.map import Map
 from game.settings import WIDTH, HEIGHT, TITLE, SCALE, PLAYER_SPEED
 
 
@@ -16,6 +17,7 @@ class Game(arcade.Window):
         self.game_over_text = arcade.Text(
             'Game Over!', width/2, height/2, font_size=50, anchor_x="center", anchor_y="center")
         self.setup()
+        self.map = Map()
 
     def setup(self):
         arcade.set_background_color(arcade.color.AMAZON)
@@ -63,6 +65,8 @@ class Game(arcade.Window):
             self.player.change_x = PLAYER_SPEED
         elif symbol == arcade.key.SPACE:
             self.player.fire()
+        elif symbol == arcade.key.G:
+            self.map.generate_new_map()
 
     def on_key_release(self, symbol: int, modifiers: int):
         if (symbol == arcade.key.LEFT or symbol == arcade.key.RIGHT):
@@ -99,6 +103,7 @@ class Game(arcade.Window):
 
     def on_draw(self):
         arcade.start_render()
+        self.map.draw()
         self.player.bullets_list.draw()
         for enemy in self.enemies_list:
             enemy.bullets_list.draw()
