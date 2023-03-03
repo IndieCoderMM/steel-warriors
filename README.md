@@ -3,6 +3,7 @@
   - [🕹 Features](#-features)
   - [🎮 Controls](#-controls)
   - [📥 Installation](#-installation)
+  - [🎯 Todos](#-todos)
   - [🤝 Contributing](#-contributing)
   - [💖 Supporting](#-supporting)
   - [📚 Resources](#-resources)
@@ -37,6 +38,13 @@ Top down shooter game created with Python Arcade library. In this game, player c
 ## 📥 Installation
 
 To play this game, you will need to have Python 3.10+ installed on your computer. Once you have cloned this repo, install the necessary dependencies using `pip install -r requirements.txt`. Then, you can run the game with `python -m game`.
+
+## 🎯 Todos
+
+- [ ] Add levels and highscore
+- [ ] Obstacles
+- [ ] Sound effects
+- [ ] Power ups
 
 ## 🤝 Contributing
 
