@@ -15,5 +15,11 @@ TILES_DATA = {
     6: ['SSS', 'SDS', 'SSS', 'SDS'],
     7: ['SDS', 'SDS', 'SDS', 'SSS'],
     8: ['SDS', 'SDS', 'SDS', 'SDS'],
-    9: ['GTS', 'SDS', 'STG', 'GRG']
+    9: ['GTS', 'SDS', 'STG', 'GRG'],
+    10: ['GGG', 'GGG', 'GGG', 'GGG'],
+    11: ['GGG', 'GGG', 'GGG', 'GGG'],
+    12: ['GGG', 'GGG', 'GGG', 'GGG'],
+    13: ['SSS', 'SSS', 'SSS', 'SSS'],
+    14: ['SSS', 'SSS', 'SSS', 'SSS'],
+    15: ['SSS', 'SSS', 'SSS', 'SSS'],
 }

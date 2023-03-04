@@ -30,7 +30,7 @@ Top down shooter game created with Python Arcade library. In this game, player c
 
 ## 🎮 Controls
 
-- Use **LEFT** & **RIGHT** arrows to move the tank
+- Use **LEFT**|**RIGHT**|**UP**|**DOWN** arrows to move the tank
 - Press **SPACE** to shoot
 - Press **P** to pause; **R** to restart
 - Press **G** to generate new map

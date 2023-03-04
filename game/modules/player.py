@@ -1,6 +1,6 @@
 import arcade
 from game.modules.tank import Tank
-from game.settings import WIDTH
+from game.settings import HEIGHT, WIDTH
 
 
 class Player(Tank):
@@ -24,3 +24,7 @@ class Player(Tank):
             self.right = WIDTH
         if self.left < 0:
             self.left = 0
+        if self.top > HEIGHT:
+            self.top = HEIGHT
+        if self.bottom < 0:
+            self.bottom = 0

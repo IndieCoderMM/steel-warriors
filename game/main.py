@@ -15,8 +15,12 @@ class Game(arcade.Window):
         self.explosion_sprites = arcade.SpriteList()
         self.score_text = arcade.Text(
             'Score: ', 10, height - 50, color=arcade.color.AZURE, font_size=30, bold=True)
+        self.hiscore_text = arcade.Text(
+            'Best: ', WIDTH - 200, height - 50, color=arcade.color.AZURE, font_size=30, bold=True)
         self.game_over_text = arcade.Text(
             'Game Over!', width/2, height/2, font_size=50, color=arcade.color.AUBURN, bold=True, anchor_x="center", anchor_y="center")
+        self.score = 0
+        self.hiscore = 0
         self.setup()
         self.map = Map()
 
@@ -31,7 +35,7 @@ class Game(arcade.Window):
         self.score = 0
         self.paused = False
         self.game_over = False
-        arcade.schedule(self.add_enemy, 2)
+        arcade.schedule(self.add_enemy, 3)
 
     def add_enemy(self, delta_time: float):
         tanks = ['red', 'dark', 'sand', ]
@@ -96,6 +100,8 @@ class Game(arcade.Window):
                     self.all_sprites.append(explosion)
                     enemy.remove_from_sprite_lists()
                     self.score += 1
+                    if self.score > self.hiscore:
+                        self.hiscore = self.score
 
         for enemy in self.enemies_list:
             if enemy.top < 0:
@@ -114,6 +120,8 @@ class Game(arcade.Window):
             self.paused = True
 
         self.score_text.text = "Score: " + str(self.score)
+        self.hiscore_text.text = "Best: " + str(self.hiscore)
+        self.hiscore_text.x = self.width - self.hiscore_text.content_width
 
     def on_draw(self):
         arcade.start_render()
@@ -133,6 +141,7 @@ class Game(arcade.Window):
             i += 1
 
         self.score_text.draw()
+        self.hiscore_text.draw()
         if self.game_over:
             self.game_over_text.draw()
 
